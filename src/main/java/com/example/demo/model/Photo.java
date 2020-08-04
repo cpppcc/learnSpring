@@ -3,7 +3,6 @@ package com.example.demo.model;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import java.sql.Blob;
 import java.util.Date;
 import java.util.Objects;
 
@@ -32,7 +31,7 @@ public class Photo {
 
     @Column
     @Lob
-    private Blob View;
+    private byte[] view_;
 
     public int getId() {
         return id;
@@ -74,12 +73,12 @@ public class Photo {
         this.uploadDate = uploadDate;
     }
 
-    public Blob getView() {
-        return View;
+    public byte[] getView_() {
+        return view_;
     }
 
-    public void setView(Blob view) {
-        View = view;
+    public void setView_(byte[] view_) {
+        this.view_ = view_;
     }
 
     @Override
@@ -91,13 +90,12 @@ public class Photo {
                 Objects.equals(Title, photo.Title) &&
                 Objects.equals(description, photo.description) &&
                 Objects.equals(privacy, photo.privacy) &&
-                Objects.equals(uploadDate, photo.uploadDate) &&
-                Objects.equals(View, photo.View);
+                Objects.equals(uploadDate, photo.uploadDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, Title, description, privacy, uploadDate, View);
+        return Objects.hash(id, Title, description, privacy, uploadDate, view_);
     }
 
     @Override
@@ -108,7 +106,6 @@ public class Photo {
                 ", description='" + description + '\'' +
                 ", privacy='" + privacy + '\'' +
                 ", uploadDate=" + uploadDate +
-                ", View=" + View +
                 '}';
     }
 }
