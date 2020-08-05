@@ -6,15 +6,15 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
-@Entity
 @Component
-@Table
+@Entity
+@Table(schema = "public" , name = "photo")
 public class Photo {
 
     @Id
-    @Column(length = 5)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "sequence" )
-    @SequenceGenerator( name = "sequence" , initialValue = 1 , allocationSize = 1)
+    @Column(length = 20)
+    @GeneratedValue( strategy = GenerationType.IDENTITY /*strategy = GenerationType.SEQUENCE , generator = "sequence" */)
+//    @SequenceGenerator( name = "sequence" , initialValue = 1 , allocationSize = 1)
     private int id;
 
     @Column(length = 120)
@@ -23,15 +23,14 @@ public class Photo {
     @Column(length = 255)
     private String description;
 
-    @Column(length = 20)
+    @Column(length = 20 )
     private String privacy;
 
     @Column
     private Date uploadDate;
 
-    @Column
-    @Lob
-    private byte[] view_;
+    @Column(length = 10 , name = "view_")
+    private Integer view;
 
     public int getId() {
         return id;
@@ -73,12 +72,12 @@ public class Photo {
         this.uploadDate = uploadDate;
     }
 
-    public byte[] getView_() {
-        return view_;
+    public Integer getView() {
+        return this.view;
     }
 
-    public void setView_(byte[] view_) {
-        this.view_ = view_;
+    public void setView(Integer view_) {
+        this.view = view_;
     }
 
     @Override
@@ -95,7 +94,7 @@ public class Photo {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, Title, description, privacy, uploadDate, view_);
+        return Objects.hash(id, Title, description, privacy, uploadDate, view);
     }
 
     @Override
