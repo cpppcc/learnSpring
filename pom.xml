@@ -79,14 +79,19 @@
 			<version>3.28.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.telegram</groupId>
-			<artifactId>telegramapi</artifactId>
-			<version>66.2</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
 		</dependency>
 		<dependency>
-			<groupId>org.telegram</groupId>
-			<artifactId>telegrambots</artifactId>
-			<version>4.9</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.8.1</version>
 		</dependency>
 	</dependencies>
 
