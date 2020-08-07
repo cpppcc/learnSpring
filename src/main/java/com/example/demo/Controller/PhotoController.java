@@ -21,7 +21,6 @@ public class PhotoController {
     public PhotoController(PhotoRepository photoRepository){
         this.photoRepository = photoRepository;
     }
-
     @GetMapping
     public ModelAndView photoHome(){
         ModelAndView modelAndView = new ModelAndView("/photos/photoHome");
