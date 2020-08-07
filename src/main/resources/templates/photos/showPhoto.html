@@ -8,28 +8,66 @@
 </head>
 <body>
     <form method="post" action="/detail/update">
-        <label>title : </label>
-        <label>
-        <input name="Title" th:value="${shPhoto.getTitle()}"/>
-        </label>
-        <label>description : </label>
-        <label>
-            <input name="description" th:value="${shPhoto.getDescription()}"/>
-        </label>
-        <label>privacy : </label>
-        <label>
-            <input name="privacy" th:value="${shPhoto.getPrivacy()}"/>
-        </label>
-        <label> view : </label>
-        <label>
-            <input name="view" th:value="${shPhoto.getView()}"/>
-        </label>
-        <label> upload date : </label>
-        <label th:text="${shPhoto.getUploadDate()}">
-        </label>
+        <table border="1">
+            <tr>
+                <td>
+                    <label>title </label>
+                </td>
+                <td>
+                    <label>
+                        <input name="Title" th:value="${shPhoto.getTitle()}"/>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>description </label>
+                </td>
+                <td>
+                    <label>
+                        <input name="description" th:value="${shPhoto.getDescription()}"/>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>privacy </label>
+                </td>
+                <td>
+                    <label>
+                        <input name="privacy" th:value="${shPhoto.getPrivacy()}"/>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label> view </label>
+                </td>
+                <td>
+                    <label>
+                        <input name="view" th:value="${shPhoto.getView()}"/>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label> upload date </label>
+                </td>
+                <td>
+                    <label th:text="${shPhoto.getUploadDate()}">
+                    </label>
+                </td>
+            </tr>
+        </table>
         <input name="id" type="hidden" th:value="${shPhoto.getId()}">
-        <input type="submit"/>
-    </form>
+        <table>
+            <tr>
+                <td>
+                    <input type="submit"/>
+                </td>
+            </tr>
+        </table>
 
+    </form>
 </body>
 </html>
