@@ -14,7 +14,7 @@ public class Photo {
     @Column(length = 20)
     @GeneratedValue( strategy = GenerationType.IDENTITY /*strategy = GenerationType.SEQUENCE , generator = "sequence" */)
 //    @SequenceGenerator( name = "sequence" , initialValue = 1 , allocationSize = 1)
-    private int id;
+    private Integer id;
 
     @Column(length = 120)
     private String Title;
@@ -25,13 +25,13 @@ public class Photo {
     @Column(length = 20 )
     private String privacy;
 
-    @Column
+    @Column(name = "upload_date")
     private Date uploadDate;
 
     @Column(length = 10 , name = "view_")
     private Integer view;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
