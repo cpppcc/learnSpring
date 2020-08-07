@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>show</title>
+    <link rel="stylesheet" type="text/css" th:href="@{stylesheet/style.css}" >
 </head>
 <body>
-$END$
+    <form method="post" action="/detail/update">
+        <label>title : </label>
+        <label>
+        <input name="Title" th:value="${shPhoto.getTitle()}"/>
+        </label>
+        <label>description : </label>
+        <label>
+            <input name="description" th:value="${shPhoto.getDescription()}"/>
+        </label>
+        <label>privacy : </label>
+        <label>
+            <input name="privacy" th:value="${shPhoto.getPrivacy()}"/>
+        </label>
+        <label> view : </label>
+        <label>
+            <input name="view" th:value="${shPhoto.getView()}"/>
+        </label>
+        <label> upload date : </label>
+        <label th:text="${shPhoto.getUploadDate()}">
+        </label>
+        <input name="id" type="hidden" th:value="${shPhoto.getId()}">
+        <input type="submit"/>
+    </form>
+
 </body>
 </html>
