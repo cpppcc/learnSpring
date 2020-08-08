@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -41,7 +42,7 @@ public class PhotoController {
 
     @PostMapping("/update")
     public String updatePhoto(Photo photo){
-        photoRepository.updatePhotoByTitleDescriptionPrivacyView_(photo.getTitle() , photo.getDescription() , photo.getPrivacy()  , photo.getView() , photo.getId());
+        photoRepository.updatePhotoByTitleDescriptionPrivacyView_UploadDate(photo.getTitle() , photo.getDescription() , photo.getPrivacy()  , photo.getView() ,photo.getUploadDate() ,  photo.getId());
         return "redirect:/detail/" + photo.getId();
     }
 

@@ -14,6 +14,6 @@ public interface PhotoRepository extends JpaRepository<Photo , Integer> {
 
     @Transactional
     @Modifying
-    @Query("update Photo set Title = ?1 , description = ?2 , privacy = ?3 , view = ?4 where  id = ?5")
-    void updatePhotoByTitleDescriptionPrivacyView_(String title , String description , String privacy ,Integer view_  , Integer id);
+    @Query("update Photo set Title = ?1 , description = ?2 , privacy = ?3 , view = ?4  , uploadDate = ?5  where  id = ?6")
+    void updatePhotoByTitleDescriptionPrivacyView_UploadDate(String title , String description , String privacy ,Integer view_  ,Date upload_date, Integer id);
 }
