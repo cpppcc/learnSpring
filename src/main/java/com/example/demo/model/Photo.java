@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.util.Date;
@@ -25,6 +26,7 @@ public class Photo {
     @Column(length = 20 )
     private String privacy;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "upload_date")
     private Date uploadDate;
 
