@@ -54,10 +54,10 @@
                     <label> upload date </label>
                 </td>
                 <td>
-                    <label th:text="${shPhoto.getUploadDate()}">
-                    </label>
                     <label>
                         <input type="datetime-local"  name="uploadDate" th:value="${shPhoto.getUploadDate()}">
+                    </label>
+                    <label th:text="${shPhoto.getUploadDate()}">
                     </label>
                 </td>
             </tr>

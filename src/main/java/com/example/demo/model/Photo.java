@@ -26,7 +26,7 @@ public class Photo {
     @Column(length = 20 )
     private String privacy;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss.S")
     @Column(name = "upload_date")
     private Date uploadDate;
 
