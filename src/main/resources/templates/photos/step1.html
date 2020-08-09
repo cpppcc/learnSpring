@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>step1</title>
+</head>
+<form action="/detail/step2" method="post" style="border: 1px solid">
+    <label>
+        id : <input name="id" th:value="${photo.getId()}"/>
+    </label>
+    <br>
+    <label>
+        title : <input name="title" th:value="${photo.getTitle()}"/>
+    </label>
+    <br>
+    <label>
+        description : <input name="description" th:value="${photo.getDescription()}"/>
+    </label>
+    <br>
+    <label>
+        privacy : <input name="privacy" th:value="${photo.getPrivacy()}"/>
+    </label>
+    <br>
+    <label>
+        view : <input name="view" th:value="${photo.getView()}"/>
+    </label>
+    <br>
+    <label>
+        upload date : <input name="uploadDate" th:value="${photo.getUploadDate()}"/>
+    </label>
+    <br>
+    <label>
+        <input type="submit" value="update">
+    </label>
+</form>
+<body>
+
+
+</body>
+</html>

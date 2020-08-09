@@ -7,16 +7,17 @@ import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.context.annotation.SessionScope;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Date;
 import java.util.List;
 
 @Controller
 @RequestMapping("/detail")
+@SessionAttributes("photo")
 public class PhotoController {
     PhotoRepository photoRepository;
     @Autowired
@@ -31,19 +32,38 @@ public class PhotoController {
         model.addAttribute("photos" , photos);
         return "/photos/photoHome";
     }
-
+    //1111111111111111111111111111111111111111111111111111111111111111111111111111
 
     @GetMapping("/{id}")
-    public String showPhoto(@PathVariable Integer id , Model model) throws ServiceException{
+    public String showPhoto(@PathVariable Integer id , Model model ,@ModelAttribute("message") String message) throws ServiceException{
         Photo photo = photoRepository.findById(id).orElseThrow(ServiceException::new);
         model.addAttribute("shPhoto" , photo);
+        model.addAttribute("message" , message);
         return "/photos/showPhoto";
     }
 
     @PostMapping("/update")
-    public String updatePhoto(Photo photo){
+    public String updatePhoto(Photo photo , RedirectAttributes redirectAttributes){
         photoRepository.updatePhotoByTitleDescriptionPrivacyView_UploadDate(photo.getTitle() , photo.getDescription() , photo.getPrivacy()  , photo.getView() ,photo.getUploadDate() ,  photo.getId());
+        redirectAttributes.addAttribute("message" , "operation done successfully");
         return "redirect:/detail/" + photo.getId();
     }
+
+    //22222222222222222222222222222222222222222222222222222222222222222222222222
+    @GetMapping("step1")
+    public String step1(ModelMap modelMap){
+        modelMap.addAttribute("photo" , new Photo());
+        return "photos/step1";
+    }
+
+
+    @PostMapping("step2")
+    public String step2(Photo photo , ModelMap modelMap , SessionStatus sessionStatus){
+//        photoRepository.updatePhotoByTitleDescriptionPrivacyView_UploadDate(photo.getTitle(),photo.getDescription(),photo.getPrivacy(),photo.getView(),photo.getUploadDate() , photo.getId());
+        modelMap.addAttribute("photo" ,  photo);
+        sessionStatus.isComplete();
+        return "photos/step2";
+    }
+
 
 }

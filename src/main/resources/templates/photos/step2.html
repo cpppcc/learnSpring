@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>step2</title>
+</head>
+<body>
+<h1 th:text="${'id : '+ photo.getId()}"></h1>
+<h1 th:text="${'title : ' + photo.getTitle()}"></h1>
+<h1 th:text="${'description : ' + photo.getDescription()}"></h1>
+<h1 th:text="${'privacy : ' + photo.getPrivacy()}"></h1>
+<h1 th:text="${'view : ' + photo.getView()}"></h1>
+<h1 th:text="${'upload date : ' + photo.getUploadDate()}"></h1>
+<a th:href="'/detail/' + ${photo.getId()}">
+    <button>ok</button>
+</a>
+</body>
+</html>
