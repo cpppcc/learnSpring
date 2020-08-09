@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{stylesheet/style.css}" >
 </head>
 <body>
+<h1 th:text="${message.isEmpty()} ? '': ${message}"></h1>
     <form method="post" action="/detail/update">
         <table border="1">
             <tr>
