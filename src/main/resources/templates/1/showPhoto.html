@@ -18,6 +18,8 @@
                     <label>
                         <input name="Title" th:value="${shPhoto.getTitle()}"/>
                     </label>
+                    <label th:text="${shPhoto.getTitle()}">
+                    </label>
                 </td>
             </tr>
             <tr>
@@ -27,6 +29,8 @@
                 <td>
                     <label>
                         <input name="description" th:value="${shPhoto.getDescription()}"/>
+                    </label>
+                    <label th:text="${shPhoto.getDescription()}">
                     </label>
                 </td>
             </tr>
@@ -38,6 +42,8 @@
                     <label>
                         <input name="privacy" th:value="${shPhoto.getPrivacy()}"/>
                     </label>
+                    <label th:text="${shPhoto.getPrivacy()}">
+                    </label>
                 </td>
             </tr>
             <tr>
@@ -48,6 +54,8 @@
                     <label>
                         <input name="view" th:value="${shPhoto.getView()}"/>
                     </label>
+                    <label th:text="${shPhoto.getView()}">
+                    </label>
                 </td>
             </tr>
             <tr>
@@ -56,7 +64,7 @@
                 </td>
                 <td>
                     <label>
-                        <input type="datetime-local"  name="uploadDate" th:value="${shPhoto.getUploadDate()}">
+                        <input type="date"  name="uploadDate" th:value="${shPhoto.getUploadDate()}">
                     </label>
                     <label th:text="${shPhoto.getUploadDate()}">
                     </label>
