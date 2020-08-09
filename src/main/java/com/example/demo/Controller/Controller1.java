@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -30,7 +29,7 @@ public class Controller1 {
     public String photoHome(Model model){
         List<Photo> photos = photoRepository.findAll(PageRequest.of(100 , 10)).getContent();
         model.addAttribute("photos" , photos);
-        return "/photos/photoHome";
+        return "/1/photoHome";
     }
     //1111111111111111111111111111111111111111111111111111111111111111111111111111
 
@@ -39,7 +38,7 @@ public class Controller1 {
         Photo photo = photoRepository.findById(id).orElseThrow(ServiceException::new);
         model.addAttribute("shPhoto" , photo);
         model.addAttribute("message" , message);
-        return "/photos/showPhoto";
+        return "/1/showPhoto";
     }
 
     @PostMapping("/update")
@@ -53,7 +52,7 @@ public class Controller1 {
     @GetMapping("step1")
     public String step1(ModelMap modelMap){
         modelMap.addAttribute("photo" , new Photo());
-        return "photos/step1";
+        return "1/step1";
     }
 
 
@@ -62,7 +61,7 @@ public class Controller1 {
         photoRepository.updatePhotoByTitleDescriptionPrivacyView_UploadDate(photo.getTitle(),photo.getDescription(),photo.getPrivacy(),photo.getView(),photo.getUploadDate() , photo.getId());
         modelMap.addAttribute("photo" ,  photo);
         sessionStatus.isComplete(); //
-        return "photos/step2";
+        return "1/step2";
     }
 
 
