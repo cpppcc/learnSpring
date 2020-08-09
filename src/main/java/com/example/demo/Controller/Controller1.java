@@ -18,10 +18,10 @@ import java.util.List;
 @Controller
 @RequestMapping("/detail")
 @SessionAttributes("photo")
-public class PhotoController {
+public class Controller1 {
     PhotoRepository photoRepository;
     @Autowired
-    public PhotoController(PhotoRepository photoRepository){
+    public Controller1(PhotoRepository photoRepository){
         this.photoRepository = photoRepository;
     }
 
@@ -61,7 +61,7 @@ public class PhotoController {
     public String step2(Photo photo , ModelMap modelMap , SessionStatus sessionStatus){
         photoRepository.updatePhotoByTitleDescriptionPrivacyView_UploadDate(photo.getTitle(),photo.getDescription(),photo.getPrivacy(),photo.getView(),photo.getUploadDate() , photo.getId());
         modelMap.addAttribute("photo" ,  photo);
-        sessionStatus.isComplete();
+        sessionStatus.isComplete(); //
         return "photos/step2";
     }
 
