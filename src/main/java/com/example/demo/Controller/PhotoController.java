@@ -59,7 +59,7 @@ public class PhotoController {
 
     @PostMapping("step2")
     public String step2(Photo photo , ModelMap modelMap , SessionStatus sessionStatus){
-//        photoRepository.updatePhotoByTitleDescriptionPrivacyView_UploadDate(photo.getTitle(),photo.getDescription(),photo.getPrivacy(),photo.getView(),photo.getUploadDate() , photo.getId());
+        photoRepository.updatePhotoByTitleDescriptionPrivacyView_UploadDate(photo.getTitle(),photo.getDescription(),photo.getPrivacy(),photo.getView(),photo.getUploadDate() , photo.getId());
         modelMap.addAttribute("photo" ,  photo);
         sessionStatus.isComplete();
         return "photos/step2";
