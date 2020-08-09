@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.ExceptionsAndError.Exception.EntityNotExistsException;
 import com.example.demo.ExceptionsAndError.Exception.ServiceException;
 import com.example.demo.jpaRepository.PhotoRepository;
 import com.example.demo.model.Photo;
@@ -11,7 +12,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.util.List;
 
 @Controller
@@ -34,8 +34,8 @@ public class Controller1 {
     //1111111111111111111111111111111111111111111111111111111111111111111111111111
 
     @GetMapping("/{id}")
-    public String showPhoto(@PathVariable Integer id , Model model ,@ModelAttribute("message") String message) throws ServiceException{
-        Photo photo = photoRepository.findById(id).orElseThrow(ServiceException::new);
+    public String showPhoto(@PathVariable Integer id , Model model ,@ModelAttribute("message") String message) throws ServiceException, EntityNotExistsException {
+        Photo photo = photoRepository.findById(id).orElseThrow(EntityNotExistsException::new);
         model.addAttribute("shPhoto" , photo);
         model.addAttribute("message" , message);
         return "/1/showPhoto";
@@ -60,9 +60,8 @@ public class Controller1 {
     public String step2(Photo photo , ModelMap modelMap , SessionStatus sessionStatus){
         photoRepository.updatePhotoByTitleDescriptionPrivacyView_UploadDate(photo.getTitle(),photo.getDescription(),photo.getPrivacy(),photo.getView(),photo.getUploadDate() , photo.getId());
         modelMap.addAttribute("photo" ,  photo);
-        sessionStatus.isComplete(); //
+        sessionStatus.isComplete();
         return "1/step2";
     }
-
 
 }
