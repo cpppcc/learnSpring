@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 import javax.persistence.*;
@@ -18,9 +19,11 @@ public class Photo {
     private Integer id;
 
     @Column(length = 120)
+    @JsonView(jsonView.class)
     private String Title;
 
     @Column(length = 255)
+    @JsonView(jsonView.class)
     private String description;
 
     @Column(length = 20 )
@@ -31,6 +34,7 @@ public class Photo {
     private Date uploadDate;
 
     @Column(length = 10 , name = "view_")
+    @JsonView(jsonView.class)
     private Integer view;
 
     public Integer getId() {
@@ -107,5 +111,8 @@ public class Photo {
                 ", privacy='" + privacy + '\'' +
                 ", uploadDate=" + uploadDate +
                 '}';
+    }
+    public interface jsonView{
+
     }
 }
